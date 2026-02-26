@@ -78,7 +78,7 @@ export default function App() {
 
       {/* ── Main content ───────────────────────────────────────────────────── */}
       <main className="relative z-10 flex-1 flex flex-col items-center px-4 py-8 md:py-12">
-        {/* Photo ── */}
+        {/* Fire bowl image ── */}
         <div
           className="animate-photo-reveal w-full max-w-md mb-8"
           style={{ animationDuration: "0.9s" }}
@@ -91,10 +91,10 @@ export default function App() {
             }}
           >
             <img
-              src="/assets/uploads/Frank-7-Jahre-Geburstag-1.jpg"
-              alt="Frank am Lagerfeuer"
+              src="/assets/generated/feuer-feuerschale-garten.dim_800x600.jpg"
+              alt="Feuer in einer Feuerschale im Garten"
               className="w-full object-cover"
-              style={{ maxHeight: "420px", objectPosition: "center top" }}
+              style={{ maxHeight: "420px", objectPosition: "center" }}
             />
             {/* Flame overlay at bottom of photo */}
             <div
