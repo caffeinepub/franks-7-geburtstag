@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    /* Campfire Night Theme */
+    --background: 0.12 0.03 35;
+    --foreground: 0.95 0.04 80;
+    --card: 0.16 0.04 35;
+    --card-foreground: 0.95 0.04 80;
+    --popover: 0.18 0.04 35;
+    --popover-foreground: 0.95 0.04 80;
+    --primary: 0.72 0.19 55;
+    --primary-foreground: 0.12 0.03 35;
+    --secondary: 0.20 0.05 35;
+    --secondary-foreground: 0.95 0.04 80;
+    --muted: 0.20 0.04 35;
+    --muted-foreground: 0.65 0.08 60;
+    --accent: 0.82 0.18 85;
+    --accent-foreground: 0.12 0.03 35;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.28 0.06 35;
+    --input: 0.22 0.05 35;
+    --ring: 0.72 0.19 55;
+
+    /* Campfire custom tokens */
+    --flame-orange: 0.72 0.22 48;
+    --flame-yellow: 0.88 0.19 90;
+    --flame-red: 0.62 0.22 30;
+    --ember-glow: 0.55 0.18 42;
+    --night-deep: 0.08 0.02 30;
+    --smoke-gray: 0.45 0.04 50;
+    --warm-cream: 0.94 0.05 80;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.16 0.04 35;
+    --sidebar-foreground: 0.95 0.04 80;
+    --sidebar-primary: 0.72 0.19 55;
+    --sidebar-primary-foreground: 0.12 0.03 35;
+    --sidebar-accent: 0.20 0.05 35;
+    --sidebar-accent-foreground: 0.95 0.04 80;
+    --sidebar-border: 0.28 0.06 35;
+    --sidebar-ring: 0.72 0.19 55;
+  }
+
+  .dark {
+    --background: 0.12 0.03 35;
+    --foreground: 0.95 0.04 80;
+    --card: 0.16 0.04 35;
+    --card-foreground: 0.95 0.04 80;
+    --popover: 0.18 0.04 35;
+    --popover-foreground: 0.95 0.04 80;
+    --primary: 0.72 0.19 55;
+    --primary-foreground: 0.12 0.03 35;
+    --secondary: 0.20 0.05 35;
+    --secondary-foreground: 0.95 0.04 80;
+    --muted: 0.20 0.04 35;
+    --muted-foreground: 0.65 0.08 60;
+    --accent: 0.82 0.18 85;
+    --accent-foreground: 0.12 0.03 35;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 0.28 0.06 35;
+    --input: 0.22 0.05 35;
+    --ring: 0.72 0.19 55;
+    --sidebar: 0.16 0.04 35;
+    --sidebar-foreground: 0.95 0.04 80;
+    --sidebar-primary: 0.72 0.19 55;
+    --sidebar-primary-foreground: 0.12 0.03 35;
+    --sidebar-accent: 0.20 0.05 35;
+    --sidebar-accent-foreground: 0.95 0.04 80;
+    --sidebar-border: 0.28 0.06 35;
+    --sidebar-ring: 0.72 0.19 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+    background-color: oklch(var(--background));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  .text-flame-orange {
+    color: oklch(var(--flame-orange));
+  }
+
+  .text-flame-yellow {
+    color: oklch(var(--flame-yellow));
+  }
+
+  .text-warm-cream {
+    color: oklch(var(--warm-cream));
+  }
+
+  .bg-night-deep {
+    background-color: oklch(var(--night-deep));
+  }
+
+  .bg-card-warm {
+    background-color: oklch(var(--card));
+  }
+
+  .border-ember {
+    border-color: oklch(var(--ember-glow));
+  }
+
+  /* Flame glow on text */
+  .glow-flame {
+    text-shadow:
+      0 0 20px oklch(var(--flame-orange) / 0.8),
+      0 0 40px oklch(var(--flame-yellow) / 0.4),
+      0 0 80px oklch(var(--flame-red) / 0.3);
+  }
+
+  .glow-subtle {
+    text-shadow:
+      0 0 12px oklch(var(--flame-orange) / 0.4),
+      0 0 24px oklch(var(--flame-yellow) / 0.2);
+  }
+
+  /* Card warm glow border */
+  .card-ember {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--card)) 0%,
+      oklch(0.18 0.06 42) 100%
+    );
+    border: 1px solid oklch(var(--ember-glow) / 0.3);
+    box-shadow:
+      0 4px 24px oklch(var(--flame-red) / 0.12),
+      0 1px 4px oklch(var(--night-deep) / 0.6),
+      inset 0 1px 0 oklch(var(--flame-orange) / 0.08);
+  }
+}
+
+/* Flame particle animation */
+@keyframes flame-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  30% {
+    transform: translateY(-25px) translateX(5px) scale(0.85) rotate(8deg);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translateY(-55px) translateX(-4px) scale(0.65) rotate(-5deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-90px) translateX(2px) scale(0.2) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleX(1); }
+  25% { opacity: 0.85; transform: scaleX(0.96) scaleY(1.02); }
+  50% { opacity: 0.95; transform: scaleX(1.02) scaleY(0.98); }
+  75% { opacity: 0.9; transform: scaleX(0.98) scaleY(1.01); }
+}
+
+@keyframes ember-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) translateX(var(--drift, 20px)) scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes photo-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ember-float var(--duration, 2s) ease-out var(--delay, 0s) infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-photo-reveal {
+  animation: photo-reveal 0.9s ease-out both;
+}
+
+.animate-countdown-pulse {
+  animation: countdown-pulse 3s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 2.5s ease-in-out infinite;
+}
+
+/* Staggered delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }

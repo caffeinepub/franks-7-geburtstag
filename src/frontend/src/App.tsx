@@ -1,7 +1,6 @@
+import { Flame, Heart, MapPin, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
-import { MapPin, Phone, Flame, Heart } from "lucide-react";
 
-// ── Timing constants ──────────────────────────────────────────────────────────
 const BIRTHDAY = new Date("2026-03-23T00:00:00");
 
 function getDaysUntilBirthday(): number {
@@ -10,13 +9,12 @@ function getDaysUntilBirthday(): number {
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
 
-function formatCountdown(days: number): { number: string; label: string } {
-  if (days <= 0) return { number: "🎂", label: "Heute ist der große Tag!" };
-  if (days === 1) return { number: "1", label: "Tag noch!" };
-  return { number: String(days), label: "Tage noch!" };
+function formatCountdown(days: number): { number: string } {
+  if (days <= 0) return { number: "🎂" };
+  if (days === 1) return { number: "1" };
+  return { number: String(days) };
 }
 
-// ── Ember particle component ──────────────────────────────────────────────────
 interface EmberProps {
   style: React.CSSProperties;
 }
@@ -25,12 +23,10 @@ function Ember({ style }: EmberProps) {
   return <span className="particle" style={style} />;
 }
 
-// ── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [days] = useState(() => getDaysUntilBirthday());
-  const { number: countdownNum, label: countdownLabel } = formatCountdown(days);
+  const { number: countdownNum } = formatCountdown(days);
 
-  // Generate stable ember particles
   const embers = Array.from({ length: 18 }, (_, i) => {
     const size = 3 + (i % 5) * 2;
     const colors = [
@@ -69,16 +65,13 @@ export default function App() {
         fontFamily: "'Nunito', sans-serif",
       }}
     >
-      {/* ── Ember field ────────────────────────────────────────────────────── */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {embers.map((e) => (
           <Ember key={e.id} style={e.style} />
         ))}
       </div>
 
-      {/* ── Main content ───────────────────────────────────────────────────── */}
       <main className="relative z-10 flex-1 flex flex-col items-center px-4 py-8 md:py-12">
-        {/* Fire bowl image ── */}
         <div
           className="animate-photo-reveal w-full max-w-md mb-8"
           style={{ animationDuration: "0.9s" }}
@@ -91,12 +84,11 @@ export default function App() {
             }}
           >
             <img
-              src="/assets/generated/feuer-feuerschale-garten.dim_800x600.jpg"
-              alt="Feuer in einer Feuerschale im Garten"
+              src="/assets/generated/lagerfeuer-jungs.dim_1200x800.jpg"
+              alt="5 Jungs am Lagerfeuer mit Marshmallows"
               className="w-full object-cover"
               style={{ maxHeight: "420px", objectPosition: "center" }}
             />
-            {/* Flame overlay at bottom of photo */}
             <div
               className="absolute bottom-0 left-0 right-0 h-24"
               style={{
@@ -107,7 +99,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Countdown card ── */}
         <div
           className="card-ember rounded-2xl p-6 md:p-8 w-full max-w-md mb-6 text-center animate-fade-up delay-200"
           style={{ animationFillMode: "both" }}
@@ -151,12 +142,11 @@ export default function App() {
             }}
           >
             {days > 0
-              ? `werde ich 7 Jahre alt! 🎉`
-              : `Heute werde ich 7 Jahre alt! 🎂`}
+              ? "werde ich 7 Jahre alt! 🎉"
+              : "Heute werde ich 7 Jahre alt! 🎂"}
           </h1>
         </div>
 
-        {/* Invitation text card ── */}
         <div
           className="card-ember rounded-2xl p-6 md:p-8 w-full max-w-md mb-6 animate-fade-up delay-300"
           style={{ animationFillMode: "both" }}
@@ -199,14 +189,17 @@ export default function App() {
           </p>
         </div>
 
-        {/* Location ── */}
         <div
           className="card-ember rounded-2xl p-5 md:p-6 w-full max-w-md mb-4 animate-fade-up delay-400"
           style={{ animationFillMode: "both" }}
         >
           <div className="flex items-start gap-3">
             <MapPin
-              style={{ color: "oklch(0.72 0.22 48)", flexShrink: 0, marginTop: 2 }}
+              style={{
+                color: "oklch(0.72 0.22 48)",
+                flexShrink: 0,
+                marginTop: 2,
+              }}
               size={22}
             />
             <div>
@@ -228,14 +221,17 @@ export default function App() {
           </div>
         </div>
 
-        {/* Contact ── */}
         <div
           className="card-ember rounded-2xl p-5 md:p-6 w-full max-w-md mb-6 animate-fade-up delay-500"
           style={{ animationFillMode: "both" }}
         >
           <div className="flex items-start gap-3">
             <Phone
-              style={{ color: "oklch(0.72 0.22 48)", flexShrink: 0, marginTop: 2 }}
+              style={{
+                color: "oklch(0.72 0.22 48)",
+                flexShrink: 0,
+                marginTop: 2,
+              }}
               size={22}
             />
             <div>
@@ -259,7 +255,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Closing note ── */}
         <div
           className="rounded-2xl p-5 md:p-6 w-full max-w-md mb-8 text-center animate-fade-up delay-600"
           style={{
@@ -298,7 +293,6 @@ export default function App() {
         </div>
       </main>
 
-      {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer
         className="relative z-10 text-center py-4 text-xs"
         style={{ color: "oklch(0.45 0.04 50)" }}
